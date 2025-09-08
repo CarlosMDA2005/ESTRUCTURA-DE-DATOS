@@ -1,1 +1,86 @@
+\\(
+Un apuntador es una varible que contiene un numero, ese numero
+es una direccion de memoria
+
+Caso 1.
+
+int vector[4];
+
+int *p; --------------------------El puntero "*p" en el momento de su declaracion aun no tine ningun valor es lo mismo como si 
+                                  declaras una varible "int n;" hasta que a "n" no le asignes un valor esta no inicializa nada.
+                                  Aunque una variable no inicializada es tomada en cuenta como si valiera 0 por defecto pero
+                                  dependeindo del compilador tambien se puede pensar que contiene un valor aleatorio.Peor en el 
+                                  caso de "p" ya que representa una direccion de memoria esta digamos que esta aputando
+                                  a una direccion aleatoria y eso puede ser peligroso e impredecible.
+p= vector;
+
+printf("%ls\n",p); )
+
+
+Caso 2.
+
+
+int main(void){
+    
+    int a[]={1,2,3,4,5};
+    int *p=a; -----------------------------El puntero "*p" tinene guardad la direccion de memoria de el areglo "a"
+    
+    for (int i=0; i<5; i++){ --------------El "for" recorre todos los elementos del arreglo "a"
+        printf("%d=%d\n",i,*(p+i));--------Imprime el numero del lugar del elemento dando despues el elementos guardado en ese
+                                           lugar, "i" es el numero indefinido de elementos del arreglo, "*(p)" es el apuntador el 
+                                           va a dar la direccion de memoria del arreglo y "+i" va a ser el numero de la casilla 
+                                           del elemto que se desea pueder ser "[i]" para que imprima todos los elementos o
+                                           "*(p+(un numero cualquiera mientras no sobre pase el tamaño del arreglo))"
+    }
+    
+    return 0;
+    
+}
+
+Caso 3.
+
+#include <stdio.h>
+
+int main(void){
+    
+    int a[]={1,2,3,4,5};
+    int *p= a;
+    int i=0;
+
+    while (i<5){
+        
+        printf("elementos a[%d]=%d\n",i,*p);
+        i++;
+        p++;
+    }
+    
+  
+}
+
+Caso 4.
+
+#include <stdio.h>
+
+int main(){
+     int numero;---------------------------------------------------------------------->Se declara una varible llamada "numero" la cual aparta un espacio de memoria 
+                                                                                       la cual podemos ver como un cajon
+     int *p;-------------------------------------------------------------------------->Se crea un apuntador vacio esperando a que le digas a que espacio apuntar
+     
+     numero=5;------------------------------------------------------------------------>Se le asigna un valor al espacio de memoria de "numero=(5)"
+     printf("%\ Antes de usar el apuntador numero=%d\n",numero);
+     
+     p=&numero;----------------------------------------------------------------------->Aqui se puede ver como si "p" le dieran la llave de "numero" mediante el "&"
+                                                                                       el cual va a poder acceder al espacio de memoria de "numero"
+     *p=10;--------------------------------------------------------------------------->En esta parte "*p=10" va a abrir el cajon de la memoria de "numero" mediante 
+                                                                                       la llave que le dio "p=&numero" sustituyendo a "numero=5" con "numero=(10)"
+     En pocas palabras "p=&numero" reserva un espacio de memoria en numero para que despues el apuntador "*p=10" apunte ese valor al espacio de
+     memoria reservado por "p=&numero"
+     
+     printf("%\ Despues de usar el apuntador numero =%d\n",numero);
+     printf("Esta es la direccion de memoria a donde apunta p:%x\n",p);
+     printf("Esta es la direccion de memoria a donde esta almacenada p:%x\n",&p);
+     
+    system ("pause");
+    return 1;
+}
 
